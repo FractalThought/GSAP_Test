@@ -1,0 +1,82 @@
+/*
+
+    Använd CSS variabler
+    Använd GSAP
+
+*/
+
+:root {
+  /* Definera några variabler */
+
+  --header-text: "Montserrat", sans-serif;
+  --paragraph-text: "Open Sans", sans-serif;
+  --margin-small: 10px;
+  --margin-medium: 20px;
+  --margin-large: 30px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--paragraph-text);
+  background: #333;
+  color: #fff;
+}
+
+.main-section {
+  min-height: 120vh;
+  margin: var(--margin-large);
+  padding: var(--margin-large);
+}
+
+.two-columns {
+  display: flex;
+  margin: 0 auto;
+  width: 50vw;
+}
+
+.icon-gallery {
+  display: grid;
+  width: 30vw;
+  max-height: 30vh;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.icon-gallery__icon--blink {
+  animation: Blink-Animation 1s ease-in-out alternate infinite;
+}
+
+.icon-gallery__icon--colorize {
+  animation: Color-Animation 1s ease-in-out alternate infinite;
+}
+
+@keyframes Blink-Animation {
+  0% {
+    opacity: 0;
+    transform: scale(0.5, 0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes Color-Animation {
+  0% {
+    color: #9b51e0;
+  }
+  100% {
+    color: #eb5757;
+  }
+}
+
+.title-card {
+  width: 30vw;
+}
+
+.title-card h1 {
+  font-family: var(--header-text);
+  margin: 0;
+  margin-bottom: var(--margin-medium);
+}
