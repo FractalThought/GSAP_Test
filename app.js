@@ -1,22 +1,38 @@
-const shieldGroup = document.querySelector("#ActionGroup");
-console.log(shieldGroup);
+const shieldGroup = document.querySelector(".actions");
 
-const tween = gsap.to("#ShieldOuter", { fill: "purple", duration: 1 });
-tween.pause();
+const tl = gsap.timeline({
+  repeat: -1,
+  repeatDelay: 0.5,
+  paused: true,
+  ease: "elastic.inOut",
+  yoyo: true
+});
+tl.to("#Swords", { x: -200, y: 80, duration: 0.4 }).to(
+  "#ShieldOuter",
+  {
+    fill: "purple",
+    duration: 0.5
+  },
+  0.3
+);
 
-window.onload = main;
+gsap.to("#EnergyFill", {
+  fill: "#E8DF1C",
+  duration: 1,
+  repeat: -1,
+  yoyo: true
+});
 
-function main() {
-  const observer = new IntersectionObserver(onObserve);
-  observer.observe(shieldGroup);
-}
+const observer = new IntersectionObserver(onObserve);
+observer.observe(shieldGroup);
 
-function onObserve(entries, observerObject) {
+function onObserve(entries) {
   entries.forEach(entry => {
     console.log(entry);
     if (entry.intersectionRatio > 0) {
-      console.log("firing");
-      tween.play();
+      tl.play();
+    } else {
+      tl.pause();
     }
   });
 }

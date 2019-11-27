@@ -80,3 +80,7 @@ body {
   margin: 0;
   margin-bottom: var(--margin-medium);
 }
+
+.last {
+  min-height: 30vh;
+}
